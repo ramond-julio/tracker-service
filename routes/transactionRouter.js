@@ -3,10 +3,10 @@ const transactionController = require('../controllers/transactionController');
 const isAuthenticated = require('../middlewares/isAuthenticated');
 
 const transactionRouter = express.Router();
-transactionRouter.get(
-    '/api/v1/transactions/lists', 
+transactionRouter.post(
+    '/api/v1/transactions/create', 
     isAuthenticated,
-    transactionController.getFilteredTransactions
+    transactionController.create
 );
 transactionRouter.get(
     '/api/v1/transactions/lists', 
@@ -23,7 +23,5 @@ transactionRouter.delete(
     isAuthenticated,
     transactionController.delete
 );
-
-
 
 module.exports = transactionRouter;
