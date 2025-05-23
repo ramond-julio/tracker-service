@@ -7,11 +7,6 @@ const transactionSchema = new mongoose.Schema(
             ref: "User",
             required: true
         },
-        name: {
-            type: String,
-            required: true,
-            default: "Uncategorized"
-        },
         type: {
             type: String,
             required: true,
