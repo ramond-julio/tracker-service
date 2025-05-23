@@ -18,7 +18,6 @@ const isAuthenticated = async(req,res,next) => {
         const err = new Error('Token or session expired, login again');
         next(err);
     }
-    console.log(token);
     
 }
 
