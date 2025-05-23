@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const usersRouter = require('./routes/usersRouter');
+const categoryRouter = require('./routes/categoryRouter')
 const errorHandler = require('./middlewares/errorHandlerMiddlewares');
 const app = express();
 
@@ -20,6 +21,7 @@ app.use(express.json()); //pass incoming json data
 
 //Routes
 app.use("/", usersRouter);
+app.use("/", categoryRouter);
 //Errors
 app.use(errorHandler);
 
