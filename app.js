@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const usersRouter = require('./routes/usersRouter');
+const errorHandler = require('./middlewares/errorHandlerMiddlewares');
 const app = express();
 
 //Connect to mongodb
@@ -18,7 +19,9 @@ mongoose
 app.use(express.json()); //pass incoming json data
 
 //Routes
-app.use("/", usersRouter);  
+app.use("/", usersRouter);
+//Errors
+app.use(errorHandler);
 
 //Start Server
 const PORT = process.env.port || 8000;
