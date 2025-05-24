@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const usersRouter = require('./routes/usersRouter');
 const categoryRouter = require('./routes/categoryRouter');
 const transactionRouter = require('./routes/transactionRouter');
 const errorHandler = require('./middlewares/errorHandlerMiddlewares');
+
 const app = express();
 
 //Connect to mongodb
@@ -20,7 +22,13 @@ mongoose
 //Middlewares
 app.use(express.json()); //pass incoming json data
 
+//CORS Config
+const corsOptions = {
+    origin:['http://localhost:5173']
+};
+
 //Routes
+app.use(cors(corsOptions));
 app.use("/", usersRouter);
 app.use("/", categoryRouter);
 app.use("/", transactionRouter);
