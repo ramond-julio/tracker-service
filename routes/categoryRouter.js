@@ -13,6 +13,11 @@ categoryRouter.get(
     isAuthenticated,
     categoryController.list
 );
+categoryRouter.get(
+    '/api/v1/categories/get-category/:id',
+    isAuthenticated,
+    categoryController.getCategory
+);
 categoryRouter.put(
     '/api/v1/categories/update/:id', 
     isAuthenticated,

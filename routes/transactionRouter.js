@@ -9,6 +9,11 @@ transactionRouter.post(
     transactionController.create
 );
 transactionRouter.get(
+    '/api/v1/transactions/get-transaction/:id', 
+    isAuthenticated,
+    transactionController.getTransaction
+);
+transactionRouter.get(
     '/api/v1/transactions/lists', 
     isAuthenticated,
     transactionController.getFilteredTransactions

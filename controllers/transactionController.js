@@ -19,6 +19,22 @@ const transactionController = {
         res.status(201).json(transaction);
     }),
 
+    //Get Transaction
+    getTransaction: asyncHandler(async(req,res) => {
+        console.log('called')
+        const transactionId = req.params.id;
+        const transaction = await Transaction.findById(transactionId);
+        res.status(200).json(
+            { 
+                type: transaction.type,
+                category: transaction.category,
+                amount: transaction.amount,
+                description: transaction.description,
+                date: transaction.date
+            }
+        );
+    }),
+
     //list
     getFilteredTransactions: asyncHandler(async(req,res) => {
         const { startDate, endDate, type, category} = req.query;

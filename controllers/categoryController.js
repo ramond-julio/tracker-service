@@ -30,6 +30,15 @@ const categoryController = {
         res.status(201).json(category);
     }),
 
+    //Get Category By Id
+    getCategory: asyncHandler(async(req,res) => {
+        console.log('called')
+        console.log(req.params.id)
+        const categoryId = req.params.id;
+        const category = await Category.findById(categoryId);
+        res.status(200).json({ name: category.name, type: category.type});
+    }),
+
     //list
     list: asyncHandler(async(req,res) => {
         const categories = await Category.find({ user: req.user });
